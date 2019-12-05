@@ -68,6 +68,11 @@ dependencies {
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
     kapt 'android.arch.persistence.room:compiler:1.1.1'
 
+    //COIL
     implementation "io.coil-kt:coil:0.8.0"
 
+    //KoDeIn
+    implementation 'org.kodein.di:kodein-di-generic-jvm:6.5.0'
+    implementation 'org.kodein.di:kodein-di-framework-android-x:6.5.0'
+    implementation 'org.kodein.di:kodein-di-core-jvm:6.5.0'
 }

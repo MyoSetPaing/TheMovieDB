@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 object Injection {
     private lateinit var customOKHttpInterceptor: CustomOKHttpInterceptor
 
-    private fun provideApiService(): MovieApi {
+    fun provideApiService(): MovieApi {
         customOKHttpInterceptor = CustomOKHttpInterceptor()
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)

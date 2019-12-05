@@ -16,8 +16,15 @@ import com.myosetpaing.themoviedb.viewmodel.PopularMovieViewModel
 import com.myosetpaing.themoviedb.viewmodel.viewModelFactory.PopularMovieViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.popularmovie_item_view.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KodeinAware {
+    override val kodein: Kodein by closestKodein()
+
+    private val popularMovieViewModelFactory: PopularMovieViewModelFactory by instance()
 
     private val mAdapter: PopularMovieRecyclerAdapter by lazy {
         PopularMovieRecyclerAdapter(applicationContext)
@@ -25,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private val mViewModel: PopularMovieViewModel by lazy {
         ViewModelProviders.of(
             this,
-            PopularMovieViewModelFactory(Injection.providePopularMovieRepository(applicationContext))
+            popularMovieViewModelFactory
         ).get(PopularMovieViewModel::class.java)
     }
 
